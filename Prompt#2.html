@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACKOUT | Premium Fitness</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;background:#050505;}
+body{background:#050505;color:#fff;font-family:'Montserrat',sans-serif;}
+
+nav{position:fixed;top:0;width:100%;height:100px;display:flex;justify-content:space-between;align-items:center;padding:0 5%;z-index:1000;}
+.nav-links{display:flex;gap:4vw;}
+.nav-links a{color:#fff;text-decoration:none;font-size:0.85rem;text-transform:uppercase;}
+
+.hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;}
+.hero-img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0.6;}
+.hero-title{font-family:'Anton';font-size:10vw;}
+
+.arsenal-section{padding:100px 5%;}
+.editorial-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;}
+.grid-item{position:relative;overflow:hidden;}
+.grid-item img{width:100%;height:100%;object-fit:cover;}
+.grid-caption{position:absolute;bottom:20px;left:20px;}
+
+.item-1{grid-column:1/8;height:300px;}
+.item-2{grid-column:9/13;height:300px;}
+.item-3{grid-column:1/6;height:300px;}
+.item-4{grid-column:7/13;height:300px;}
+
+.contact-section{padding:100px 5%;display:flex;gap:50px;flex-wrap:wrap;}
+.pro-btn{display:inline-block;background:#fff;color:#000;padding:15px 30px;text-decoration:none;}
+
+footer{text-align:center;padding:50px;}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="nav-links">
+<a href="#arsenal">Arsenal</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<img src="image_7a385a.jpg" class="hero-img">
+<h1 class="hero-title">BLACKOUT</h1>
+</section>
+
+<section class="arsenal-section" id="arsenal">
+<h2>The Arsenal</h2>
+
+<div class="editorial-grid">
+
+<a href="raw-iron.html" target="_blank" class="grid-item item-1">
+<img src="622888282_122162865842913694_4657798695880561837_n.jpg">
+<div class="grid-caption"><h4>Raw Iron</h4></div>
+</a>
+
+<a href="biomechanics.html" target="_blank" class="grid-item item-2">
+<img src="622965544_122162865764913694_4251034768053420714_n.jpg">
+<div class="grid-caption"><h4>Biomechanics</h4></div>
+</a>
+
+<a href="culture.html" target="_blank" class="grid-item item-3">
+<img src="671433454_122176397186913694_1342465785789496451_n.jpg">
+<div class="grid-caption"><h4>The Culture</h4></div>
+</a>
+
+<a href="endurance.html" target="_blank" class="grid-item item-4">
+<img src="671134330_122175665348913694_7861252581300701675_n.jpg">
+<div class="grid-caption"><h4>Endurance</h4></div>
+</a>
+
+</div>
+</section>
+
+<section class="contact-section" id="contact">
+<div>
+<h2>Find Us</h2>
+<p>ABAD SANTOS AVE, TONDO, MANILA</p>
+<a href="https://www.google.com/maps?q=Abad+Santos+Ave+Tondo+Manila" target="_blank" class="pro-btn">
+OPEN IN GOOGLE MAPS
+</a>
+</div>
+
+<div>
+<iframe src="https://www.google.com/maps?q=Abad+Santos+Ave+Tondo+Manila&output=embed"
+width="400" height="300" style="border:0;"></iframe>
+</div>
+</section>
+
+<footer>
+<p>© 2026 BLACKOUT FITNESS</p>
+</footer>
+
+</body>
+</html>

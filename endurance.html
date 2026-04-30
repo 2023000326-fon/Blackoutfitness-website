@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endurance Gallery | BLACKOUT FITNESS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; background-color: #050505; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #FFD700; }
+        :root { --gold: #FFD700; --black: #050505; --white: #ffffff; --muted: #888888; --font-display: 'Anton', sans-serif; --font-body: 'Montserrat', sans-serif; }
+        body { background-color: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; }
+        nav { position: fixed; top: 0; width: 100%; height: 80px; display: flex; align-items: center; padding: 0 5%; z-index: 1000; background: rgba(5, 5, 5, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .back-btn { color: var(--white); text-decoration: none; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; margin-right: auto; }
+        .back-btn:hover { color: var(--gold); }
+        .brand { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 2px; position: absolute; left: 50%; transform: translateX(-50%);}
+        .content-wrapper { padding: 150px 5% 100px; max-width: 1400px; margin: 0 auto; }
+        .page-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); text-transform: uppercase; line-height: 1; }
+        .page-title span { color: transparent; -webkit-text-stroke: 1px var(--gold); }
+        .description { font-size: 1.1rem; line-height: 1.8; color: var(--muted); margin: 20px 0 60px; max-width: 700px;}
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-auto-rows: 300px; gap: 15px; }
+        .gallery-item { position: relative; overflow: hidden; background: #111; cursor: pointer;}
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .gallery-item:hover img { filter: grayscale(0%); transform: scale(1.05); }
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+        .item-tall { grid-row: span 2; }
+        @media (max-width: 768px) { .item-large, .item-wide { grid-column: span 1; } .gallery-grid { grid-auto-rows: 250px; } }
+        footer { padding: 40px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px;}
+        .copyright { color: var(--muted); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .fade-up { animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(40px); }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="javascript:history.back()" class="back-btn">← Back to Main</a>
+        <div class="brand">BLACKOUT FITNESS</div>
+    </nav>
+    <div class="content-wrapper">
+        <h1 class="page-title fade-up">Push <span>Endurance</span></h1>
+        <p class="description fade-up" style="animation-delay: 0.1s;">
+            From high-intensity interval training turf zones to state-of-the-art assault bikes and rowers, we provide the exact environment you need to push your cardiovascular threshold.
+        </p>
+        
+        <div class="gallery-grid fade-up" style="animation-delay: 0.2s;">
+            <div class="gallery-item item-large"><img src="671134330_122175665348913694_7861252581300701675_n.jpg"></div>
+            <div class="gallery-item item-tall"><img src="671134330_122175665348913694_7861252581300701675_n.jpg" style="object-position: bottom;"></div>
+            <div class="gallery-item"><img src="671134330_122175665348913694_7861252581300701675_n.jpg" style="object-position: left;"></div>
+            <div class="gallery-item item-wide"><img src="671134330_122175665348913694_7861252581300701675_n.jpg" style="object-position: right;"></div>
+        </div>
+    </div>
+    <footer><p class="copyright">© 2026 BLACKOUT FITNESS.</p></footer>
+</body>
+</html>

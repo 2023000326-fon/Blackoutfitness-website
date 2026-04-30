@@ -1,0 +1,402 @@
+TESTING(3).HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKOUT | Premium Fitness</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === PRO RESET & VARIABLES === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; background-color: #050505; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #FFD700; }
+
+        :root {
+            --gold: #FFD700;
+            --black: #050505;
+            --dark-grey: #111111;
+            --white: #ffffff;
+            --muted: #888888;
+            --font-display: 'Anton', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === EDITORIAL NAVBAR === */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 100px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000; transition: 0.4s ease;
+            background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand-logo { height: 50px; width: auto; }
+        
+        .nav-links { display: flex; gap: 4vw; }
+        .nav-links a {
+            color: var(--white); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; text-transform: uppercase; letter-spacing: 2px;
+            position: relative; overflow: hidden; display: inline-block;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: -100%;
+            width: 100%; height: 1px; background: var(--gold); transition: 0.4s;
+        }
+        .nav-links a:hover::after { left: 0; }
+
+        .menu-btn { color: var(--white); font-size: 1.5rem; display: none; cursor: pointer; }
+
+        /* === MASSIVE TYPOGRAPHY HERO === */
+        .hero {
+            position: relative; height: 100vh; width: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+        .hero-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.6; filter: grayscale(20%);
+            transform: scale(1.05); animation: zoomPan 20s infinite alternate;
+        }
+        @keyframes zoomPan { 0% { transform: scale(1); } 100% { transform: scale(1.1) translateY(-2%); } }
+        
+        .hero-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.8) 70%, rgba(5,5,5,1) 100%);
+        }
+
+        .hero-text-container { position: relative; z-index: 2; text-align: center; margin-top: 10vh; pointer-events: none;}
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(5rem, 15vw, 15rem);
+            line-height: 0.85; text-transform: uppercase; margin: 0;
+            color: var(--white); text-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .hero-title.outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--gold);
+            transform: translateY(-20px);
+        }
+        .hero-subtitle {
+            font-size: 1rem; font-weight: 500; letter-spacing: 10px;
+            text-transform: uppercase; color: var(--gold); margin-top: 20px;
+        }
+
+        /* === INFINITE MARQUEE === */
+        .marquee-wrapper {
+            position: relative; width: 100%; background: var(--gold); padding: 15px 0;
+            overflow: hidden; display: flex; align-items: center; z-index: 10;
+            transform: rotate(-2deg) scale(1.05); margin: 50px 0;
+        }
+        .marquee {
+            white-space: nowrap; display: flex; align-items: center;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee h3 {
+            font-family: var(--font-display); font-size: 2rem; color: var(--black);
+            margin: 0 20px; text-transform: uppercase; letter-spacing: 2px;
+        }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* === EDITORIAL MANIFESTO === */
+        .manifesto { padding: 150px 5%; max-width: 1400px; margin: 0 auto; }
+        .manifesto-text {
+            font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4.5rem);
+            line-height: 1.1; text-transform: uppercase; color: var(--muted);
+        }
+        .manifesto-text span { color: var(--white); transition: color 0.5s;}
+        .manifesto-text span:hover { color: var(--gold); }
+
+        /* === ASYMMETRICAL ARSENAL GRID === */
+        .arsenal-section { padding: 100px 5%; max-width: 1600px; margin: 0 auto; }
+        .section-header { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); text-transform: uppercase; margin-bottom: 50px; line-height: 1;}
+        .section-header span { color: transparent; -webkit-text-stroke: 1px var(--gold); }
+
+        .editorial-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px;
+            align-items: center;
+        }
+        .grid-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .grid-item:hover .grid-img { filter: grayscale(0%); transform: scale(1.02); }
+        .grid-item { position: relative; overflow: hidden; background: var(--dark-grey); }
+
+        /* Breaking the grid */
+        .item-1 { grid-column: 1 / 8; aspect-ratio: 16/9; }
+        .item-2 { grid-column: 9 / 13; aspect-ratio: 3/4; transform: translateY(100px); }
+        .item-3 { grid-column: 1 / 6; aspect-ratio: 4/5; transform: translateY(-50px); margin-top: 100px;}
+        .item-4 { grid-column: 7 / 13; aspect-ratio: 16/9; margin-top: 100px;}
+
+        .grid-caption {
+            position: absolute; bottom: 30px; left: 30px; z-index: 2;
+        }
+        .grid-caption h4 { font-family: var(--font-display); font-size: 2.5rem; letter-spacing: 1px; text-transform: uppercase;}
+        .grid-caption p { font-size: 0.9rem; color: var(--gold); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;}
+        .grid-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 50%); pointer-events: none;}
+
+        /* === BORDERLESS PRICING LIST === */
+        .pricing-section { padding: 150px 5%; max-width: 1200px; margin: 0 auto; }
+        .pricing-list { display: flex; flex-direction: column; }
+        .pricing-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 50px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s; cursor: pointer; position: relative;
+        }
+        .pricing-row:hover { padding-left: 20px; border-color: var(--gold); }
+        .pricing-row:hover .tier-name { color: var(--gold); }
+        
+        .tier-info { display: flex; flex-direction: column; gap: 10px; }
+        .tier-name { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); text-transform: uppercase; transition: 0.4s;}
+        .tier-desc { color: var(--muted); font-size: 0.9rem; letter-spacing: 1px; max-width: 400px; line-height: 1.6;}
+        
+        .tier-price { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--white); text-align: right;}
+        .tier-price span { font-family: var(--font-body); font-size: 1rem; color: var(--muted); font-weight: 500;}
+
+        /* === SLEEK CONTACT === */
+        .contact-section { padding: 100px 5%; display: flex; gap: 50px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap;}
+        .contact-left { flex: 1; min-width: 300px; }
+        .contact-right { flex: 1; min-width: 300px; }
+        
+        .ultra-input {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
+            color: var(--white); font-family: var(--font-body); font-size: 1.2rem; padding: 20px 0; margin-bottom: 30px;
+            transition: 0.3s; border-radius: 0;
+        }
+        .ultra-input:focus { outline: none; border-color: var(--gold); }
+        .ultra-input::placeholder { color: var(--muted); }
+
+        .pro-btn {
+            display: inline-block; background: var(--white); color: var(--black);
+            padding: 20px 50px; font-family: var(--font-display); font-size: 1.5rem;
+            text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .pro-btn:hover { background: var(--gold); }
+
+        /* === FOOTER === */
+        footer { padding: 100px 5% 50px; text-align: center; overflow: hidden;}
+        .footer-massive { font-family: var(--font-display); font-size: clamp(4rem, 15vw, 18rem); color: rgba(255,255,255,0.03); line-height: 0.8; margin-bottom: 50px;}
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;}
+        .footer-links a { color: var(--white); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s;}
+        .footer-links a:hover { color: var(--gold); }
+        .copyright { color: var(--muted); font-size: 0.8rem; letter-spacing: 1px;}
+
+        /* === ANIMATION CLASSES === */
+        .fade-up { opacity: 0; transform: translateY(60px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-btn { display: block; }
+            .item-1, .item-2, .item-3, .item-4 { grid-column: 1 / 13; transform: none; margin-top: 0; aspect-ratio: auto; height: 400px;}
+            .editorial-grid { gap: 40px; }
+            .pricing-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .tier-price { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <img src="image_7a477a.png" alt="Blackout Logo" class="brand-logo">
+        </a>
+        <div class="nav-links">
+            <a href="#philosophy">Philosophy</a>
+            <a href="#arsenal">Arsenal</a>
+            <a href="#memberships">Memberships</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-btn">☰</div>
+    </nav>
+
+    <section class="hero">
+        <img src="image_7a385a.jpg" class="hero-bg" alt="Facility Background">
+        <div class="hero-gradient"></div>
+        <div class="hero-text-container">
+            <h1 class="hero-title fade-up">BLACKOUT</h1>
+            <h1 class="hero-title outline fade-up" style="transition-delay: 0.1s;">FITNESS</h1>
+            <p class="hero-subtitle fade-up" style="transition-delay: 0.3s;">Elite Training Facility • Abad Santos</p>
+        </div>
+    </section>
+
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            <h3>NO EXCUSES</h3><h3>//</h3><h3>ELEVATE YOUR STANDARD</h3><h3>//</h3><h3>JOIN THE GRIND</h3><h3>//</h3>
+            <h3>NO EXCUSES</h3><h3>//</h3><h3>ELEVATE YOUR STANDARD</h3><h3>//</h3><h3>JOIN THE GRIND</h3><h3>//</h3>
+            <h3>NO EXCUSES</h3><h3>//</h3><h3>ELEVATE YOUR STANDARD</h3><h3>//</h3><h3>JOIN THE GRIND</h3><h3>//</h3>
+        </div>
+    </div>
+
+    <section class="manifesto" id="philosophy">
+        <p class="manifesto-text fade-up">
+            We don't do compromises. <span>Blackout Fitness</span> is an elite space forged for those who demand <span>perfection</span> from their training. Top-tier engineering, raw iron, and an unrelenting <span>community</span>.
+        </p>
+    </section>
+
+    <section class="arsenal-section" id="arsenal">
+        <h2 class="section-header fade-up">The <span>Arsenal</span></h2>
+        
+        <div class="editorial-grid">
+            <div class="grid-item item-1 fade-up">
+                <img src="622888282_122162865842913694_4657798695880561837_n.jpg" class="grid-img" alt="Free Weights">
+                <div class="grid-caption">
+                    <p>01</p>
+                    <h4>Raw Iron</h4>
+                </div>
+            </div>
+            
+            <div class="grid-item item-2 fade-up">
+                <img src="622965544_122162865764913694_4251034768053420714_n.jpg" class="grid-img" alt="Machines">
+                <div class="grid-caption">
+                    <p>02</p>
+                    <h4>Biomechanics</h4>
+                </div>
+            </div>
+
+            <div class="grid-item item-3 fade-up">
+                <img src="671433454_122176397186913694_1342465785789496451_n.jpg" class="grid-img" alt="Community">
+                <div class="grid-caption">
+                    <p>03</p>
+                    <h4>The Culture</h4>
+                </div>
+            </div>
+
+            <div class="grid-item item-4 fade-up">
+                <img src="671134330_122175665348913694_7861252581300701675_n.jpg" class="grid-img" alt="Cardio">
+                <div class="grid-caption">
+                    <p>04</p>
+                    <h4>Endurance</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="memberships">
+        <h2 class="section-header fade-up">Select <span>Tier</span></h2>
+        
+        <div class="pricing-list">
+            <div class="pricing-row fade-up">
+                <div class="tier-info">
+                    <div class="tier-name">Day Pass</div>
+                    <div class="tier-desc">Full facility access for a single day. Perfect for drop-ins and travelers.</div>
+                </div>
+                <div class="tier-price">₱150 <span>/ DAY</span></div>
+            </div>
+
+            <div class="pricing-row fade-up" style="border-color: var(--gold);">
+                <div class="tier-info">
+                    <div class="tier-name" style="color: var(--gold);">Monthly Elite</div>
+                    <div class="tier-desc">Unlimited facility access, complimentary assessment, and priority locker usage. Our standard.</div>
+                </div>
+                <div class="tier-price">₱1,200 <span>/ MO</span></div>
+            </div>
+
+            <div class="pricing-row fade-up">
+                <div class="tier-info">
+                    <div class="tier-name">Personal Training</div>
+                    <div class="tier-desc">1-on-1 coaching with our elite trainers tailored to your specific biomechanics and goals.</div>
+                </div>
+                <div class="tier-price">INQUIRE</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+    <div class="contact-left fade-up">
+        <h2 class="section-header" style="font-size: clamp(3rem, 5vw, 4rem); margin-bottom: 20px;">
+            Find <span>Us</span>
+        </h2>
+
+        <p style="color: var(--muted); margin-bottom: 40px; font-size: 1.1rem; max-width: 400px; line-height: 1.6;">
+            Visit Blackout Fitness and start your journey today.
+        </p>
+
+        <p style="font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 10px;">
+            ABAD SANTOS AVE, TONDO, MANILA
+        </p>
+
+        <p style="color: var(--gold); font-weight: 600; margin-bottom: 40px; letter-spacing: 1px;">
+            BLACKOUTTAYUMAN@GMAIL.COM
+        </p>
+
+        <a href="https://www.google.com/maps?q=Abad+Santos+Ave+Tondo+Manila"
+           target="_blank"
+           class="pro-btn">
+           OPEN IN GOOGLE MAPS 📍
+        </a>
+    </div>
+
+    <div class="contact-right fade-up">
+        <iframe 
+            src="https://www.google.com/maps?q=Abad+Santos+Ave+Tondo+Manila&output=embed"
+            width="100%" 
+            height="400" 
+            style="border:0; border-radius: 8px;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+    <footer>
+        <div class="footer-links fade-up">
+            <a href="https://www.facebook.com/blackoutTAYUMAN" target="_blank">Facebook</a>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.84061803767!2d120.97682231535182!3d14.608174189796856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca0e68e4ab1b%3A0x6b77240c5f2b8f36!2sAbad%20Santos%20Ave%2C%20Tondo%2C%20Manila%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" target="_blank">Location</a>
+            <a href="#memberships">Join Now</a>
+        </div>
+        <div class="footer-massive">BLACKOUT</div>
+        <p class="copyright">© 2026 BLACKOUT FITNESS. DESIGNED FOR THE ELITE.</p>
+    </footer>
+
+    <script>
+        // Navbar Scrolled State
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Professional Reveal Animations using IntersectionObserver
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        // Apply observer to all elements with .fade-up class
+        document.querySelectorAll('.fade-up').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
